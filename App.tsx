@@ -26,7 +26,6 @@ import {
 } from 'react-native/Libraries/NewAppScreen';
 import { NativeModules } from 'react-native';
 import { PermissionsAndroid } from 'react-native';
-import { MapboxNavigation }  from './src/MapboxNavigationView';
 
 type SectionProps = PropsWithChildren<{
     title: string;
@@ -69,7 +68,7 @@ function App(): JSX.Element {
 
     const NewModuleButton = () => {
         const onPress = () => {
-            MapboxNavigationModule.createNavigationEvent('25 Commerce Crescent, Kramerville, Johannesburg, 2090');
+            MapboxNavigationModule.navigateToNative();
         };
         return (
             <Button
@@ -161,7 +160,6 @@ function App(): JSX.Element {
                     <TestModuleButton />
                     <Button title="request location permissions" onPress={requestLocationPermission} />
                     <Button title="request notification permissions" onPress={requestNotificationPermission} />
-                    <MapboxNavigation/>
                     <Section title="Step One">
                         Edit <Text style={styles.highlight}>App.tsx</Text> to change this
                         screen and then come back to see your edits.

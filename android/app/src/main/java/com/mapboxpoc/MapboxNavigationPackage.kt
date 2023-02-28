@@ -13,6 +13,6 @@ class MapboxNavigationPackage: ReactPackage {
     }
 
     override fun createNativeModules(reactContext: ReactApplicationContext): MutableList<NativeModule> {
-        return mutableListOf()
+        return mutableListOf(MapboxNavigationModule(reactContext))
     }
 }
