@@ -33,28 +33,11 @@ class MapboxNavigationView(private val callerContext: ReactApplicationContext) :
 
     override fun createViewInstance(reactContext: ThemedReactContext): NavigationView {
         val mapboxNavigationView = LayoutInflater.from(reactContext).inflate(
-            R.layout.mapbox_activity_navigation_view,
+            R.layout.navigation_view,
             null
         ) as NavigationView
 
-//        mapboxNavigationView.api.routeReplayEnabled(true);
-        mapboxNavigationView.api.startFreeDrive();
+        mapboxNavigationView.api.routeReplayEnabled(true);
         return mapboxNavigationView
     }
-
-//    @ReactProp(name = "origin")
-//    fun setOrigin(view: NavigationView, sources: ReadableArray?) {
-//        if (sources == null) {
-//            view.setOrigin(null)
-//            return
-//        }
-//        view.setOrigin(Point.fromLngLat(sources.getDouble(0), sources.getDouble(1)))
-//    }
-
-//    override fun onDropViewInstance(view: NavigationView) {
-//        view.onDropViewInstance()
-//        super.onDropViewInstance(view)
-//    }
-
-
 }

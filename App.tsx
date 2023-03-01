@@ -66,30 +66,20 @@ function App(): JSX.Element {
 
     const { MapboxNavigationModule, TestModule } = NativeModules;
 
-    const NewModuleButton = () => {
-        const onPress = () => {
-            MapboxNavigationModule.navigateToNative();
-        };
-        return (
-            <Button
-                title="Click to invoke your navigation module!"
-                color="#841584"
-                onPress={onPress}
-            />
-        );
+    const openNavigationView = async () => {
+        try {
+            MapboxNavigationModule.navigateToNavigationView()
+        } catch (err) {
+            console.warn(err);
+        }
     };
 
-    const TestModuleButton = () => {
-        const onPress = () => {
-            TestModule.createTestEvent('25 Commerce Crescent, Kramerville, Johannesburg, 2090');
-        };
-        return (
-            <Button
-                title="Click to invoke your test module!"
-                color="#841584"
-                onPress={onPress}
-            />
-        );
+    const openTurnByTurn= async () => {
+        try {
+            MapboxNavigationModule.navigateToTurnByTurn()
+        } catch (err) {
+            console.warn(err);
+        }
     };
 
     const requestLocationPermission = async () => {
@@ -143,6 +133,9 @@ function App(): JSX.Element {
     };
 
     return (
+        // <View>
+        //     {MapboxNavigationModule.navigateToNative()}
+        // </View>
         <SafeAreaView style={backgroundStyle}>
             <StatusBar
                 barStyle={isDarkMode ? 'light-content' : 'dark-content'}
@@ -156,20 +149,12 @@ function App(): JSX.Element {
                     style={{
                         backgroundColor: isDarkMode ? Colors.black : Colors.white,
                     }}>
-                    <NewModuleButton />
-                    <TestModuleButton />
+
+                    {/* <TestModuleButton /> */}
+                    <Button title="Open Navigation View" onPress={openNavigationView} />
+                    <Button title="Open Turn By Turn View" onPress={openTurnByTurn} />
                     <Button title="request location permissions" onPress={requestLocationPermission} />
                     <Button title="request notification permissions" onPress={requestNotificationPermission} />
-                    <Section title="Step One">
-                        Edit <Text style={styles.highlight}>App.tsx</Text> to change this
-                        screen and then come back to see your edits.
-                    </Section>
-                    <Section title="See Your Changes">
-                        <ReloadInstructions />
-                    </Section>
-                    <Section title="Debug">
-                        <DebugInstructions />
-                    </Section>
                 </View>
             </ScrollView>
         </SafeAreaView>

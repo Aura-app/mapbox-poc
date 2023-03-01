@@ -24,8 +24,13 @@
             <category android:name="android.intent.category.LAUNCHER" />
         </intent-filter>
       </activity>
-    <activity
-            android:name="com.mapboxpoc.NavigationViewActivity"
-            android:label="navigationview" />
+      <activity
+          android:name="com.mapboxpoc.NavigationViewActivity"
+          android:label="navigationview"
+      />
+      <activity
+          android:name="com.mapboxpoc.TurnByTurnExperienceActivity"
+          android:label="turnbyturn"
+      />
     </application>
 </manifest>
